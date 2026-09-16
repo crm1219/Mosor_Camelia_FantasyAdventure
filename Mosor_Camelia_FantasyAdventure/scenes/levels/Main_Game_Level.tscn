@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://6pp82v2xtyhm"]
+
+[ext_resource type="Texture2D" uid="uid://qeqb7veddh0t" path="res://Mosor_Camelia_FantasyAdventure/assets/art/BG_03.png" id="1_qyaw4"]
+
+[node name="Main_Game_Level" type="Node2D" unique_id=873863979]
+
+[node name="Main_Game_Level_BG" type="Sprite2D" parent="." unique_id=1977498240]
+position = Vector2(579, 328)
+scale = Vector2(0.7606367, 0.8833994)
+texture = ExtResource("1_qyaw4")
