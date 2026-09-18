@@ -12,12 +12,15 @@ func _process(delta: float) -> void:
 
 
 func _on_start_game_button_pressed() -> void:
+	$ClickSound.play()
+	await $ClickSound.finished
 	get_tree().change_scene_to_file(
         "res://Mosor_Camelia_FantasyAdventure/scenes/levels/Main_Game_Level.tscn"
 	)
 
 
 func _on_quit_game_button_pressed() -> void:
+	$ClickSound.play()
 	$Quit_Confirm_Dialog.popup_centered()
 
 

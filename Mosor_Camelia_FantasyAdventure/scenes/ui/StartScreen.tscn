@@ -4,19 +4,24 @@
 [ext_resource type="Script" uid="uid://bxcmte8q1ce5o" path="res://Mosor_Camelia_FantasyAdventure/scenes/ui/start_screen.gd" id="1_6wsr8"]
 [ext_resource type="Texture2D" uid="uid://dmij0bd8qbi6p" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Game Title Logo_transp.png" id="3_vhnqa"]
 [ext_resource type="Texture2D" uid="uid://cbpqn6viyigxr" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Button Rect_green_Start_button.png" id="4_5s784"]
+[ext_resource type="AudioStream" uid="uid://cqlsx8oeqno1i" path="res://Mosor_Camelia_FantasyAdventure/assets/audio/Swoosh_SFX.mp3" id="4_tludg"]
 [ext_resource type="Texture2D" uid="uid://cd0spwonigb0u" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Button Rect_grayed_button.png" id="5_fqhis"]
 [ext_resource type="Texture2D" uid="uid://cky56c74k55u2" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Button Rect_green_Highlighted_Start_button.png" id="6_tludg"]
 [ext_resource type="Texture2D" uid="uid://dtmlshsyt25y2" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Start Game_button_text.png" id="7_aq0aj"]
+[ext_resource type="AudioStream" uid="uid://be0ptq5pkqad" path="res://Mosor_Camelia_FantasyAdventure/assets/audio/Button_Click.mp3" id="8_fqhis"]
 [ext_resource type="Texture2D" uid="uid://b2se8qxh6mqd0" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Button Rect_red_Quit_button.png" id="8_pphod"]
 [ext_resource type="Texture2D" uid="uid://c1ruytxs2v050" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Background red highlighted_button.png" id="9_0ecbh"]
 [ext_resource type="Texture2D" uid="uid://l7rnrfyqm50u" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Quit Game_button_text.png" id="10_1jc11"]
+[ext_resource type="Texture2D" uid="uid://ed8kcndycqbn" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Scroll_01.png" id="13_0ecbh"]
+[ext_resource type="Texture2D" uid="uid://b6u6wg1p38d5j" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Camelia_Mosor_text.png" id="14_1jc11"]
+[ext_resource type="Texture2D" uid="uid://c2fwvwi4lqdrc" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Course_Notation_Text.png" id="15_2lgdx"]
 
 [sub_resource type="Animation" id="Animation_hb708"]
 resource_name = "Game_Title"
 
 [sub_resource type="Animation" id="Animation_3p1ow"]
 resource_name = "Game_Title_Bounce"
-length = 0.8
+length = 1.5999999999999999
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,6 +33,28 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(1.15, 1.15), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title_Scroll:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1e-05, -0.13333334, 0, 0, 0, 0.338, -0.13333334, -0.056331664, 0, 0),
+"times": PackedFloat32Array(0, 0.8, 1.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title_Scroll:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(0.368, -0.25, 0, 0.25, 0, 0.368, -0.13333334, 0, 0, 0, 0.368, -0.13333334, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.8, 1.6)
 }
 
 [sub_resource type="Animation" id="Animation_yniyf"]
@@ -43,6 +70,28 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title_Scroll:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.338, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title_Scroll:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.368, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a5pas"]
@@ -105,6 +154,10 @@ pivot_offset = Vector2(571.5, 230)
 texture = ExtResource("3_vhnqa")
 stretch_mode = 5
 
+[node name="WhooshSound" type="AudioStreamPlayer2D" parent="Game_Title_Logo" unique_id=1258980148]
+stream = ExtResource("4_tludg")
+autoplay = true
+
 [node name="Start_Game_Button" type="Button" parent="." unique_id=1662716989]
 layout_mode = 1
 anchors_preset = 7
@@ -112,10 +165,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -366.0
-offset_top = -90.99994
-offset_right = 101.0
-offset_bottom = -16.999939
+offset_left = -514.0
+offset_top = -94.99994
+offset_right = -47.0
+offset_bottom = -20.999939
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5919933, 0.70644766)
@@ -131,10 +184,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 39.0
-offset_top = -91.0
-offset_right = 426.0
-offset_bottom = -15.0
+offset_left = -146.99994
+offset_top = -95.99994
+offset_right = 240.00006
+offset_bottom = -19.999939
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.592, 0.706)
@@ -145,6 +198,38 @@ icon = ExtResource("10_1jc11")
 
 [node name="Quit_Confirm_Dialog" type="ConfirmationDialog" parent="." unique_id=566822167]
 dialog_text = "Are you sure you want to quit?"
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="." unique_id=931773965]
+position = Vector2(210, 557.00006)
+scale = Vector2(0.5919933, 0.70644766)
+stream = ExtResource("8_fqhis")
+
+[node name="Title_Scroll" type="TextureRect" parent="." unique_id=1306931891]
+layout_mode = 0
+offset_left = 687.0
+offset_top = 63.0
+offset_right = 2111.0
+offset_bottom = 911.0
+scale = Vector2(0.338, 0.368)
+pivot_offset = Vector2(0, 424)
+texture = ExtResource("13_0ecbh")
+
+[node name="Programmer_Name" type="TextureRect" parent="Title_Scroll" unique_id=1545867798]
+layout_mode = 0
+offset_left = 387.13458
+offset_top = 328.4598
+offset_right = 1081.1345
+offset_bottom = 551.45984
+texture = ExtResource("14_1jc11")
+
+[node name="Course_Notation" type="TextureRect" parent="." unique_id=1908355935]
+layout_mode = 0
+offset_left = 804.99994
+offset_top = 597.0
+offset_right = 1579.0
+offset_bottom = 674.0
+scale = Vector2(0.44607565, 0.66780317)
+texture = ExtResource("15_2lgdx")
 
 [connection signal="pressed" from="Start_Game_Button" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="Quit_Game_Button" to="." method="_on_quit_game_button_pressed"]
