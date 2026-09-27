@@ -25,6 +25,18 @@ func update_movement_animation(input_direction):
 		animated_sprite.play("idle_" + last_direction)
 	else:
 		animated_sprite.play("run_" + last_direction)
+		
+func play_action_animation(action_name):
+	is_action_playing = true
+	animated_sprite.play(action_name + "_" + last_direction)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("attack"):
+		play_action_animation("attack")
+	elif event.is_action_pressed("test_hit"):
+		play_action_animation("hit")
+	elif event.is_action_pressed("test_die"):
+		play_action_animation("die")
 
 func _physics_process(delta: float) -> void:
 	
@@ -39,3 +51,6 @@ func _physics_process(delta: float) -> void:
 
 
 	move_and_slide()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	is_action_playing = false
