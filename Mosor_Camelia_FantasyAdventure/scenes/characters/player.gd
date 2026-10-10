@@ -10,6 +10,8 @@ const JUMP_VELOCITY = -400.0
 var last_direction = "down"
 var is_action_playing = false
 
+var health = 100
+
 func update_direction(input_direction):
 	if input_direction.y < 0:
 		last_direction = "up"
@@ -54,3 +56,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	is_action_playing = false
+	
+func take_damage(amount):
+	health -= amount
+	health_changed.emit(health)
+
+signal health_changed(new_health)
