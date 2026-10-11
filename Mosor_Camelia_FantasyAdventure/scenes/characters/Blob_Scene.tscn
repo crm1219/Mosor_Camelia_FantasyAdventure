@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bg7ydn4koabe6"]
+
+[ext_resource type="Script" uid="uid://da2mg5edb3nir" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/blob_ai.gd" id="1_lqkc0"]
+[ext_resource type="Texture2D" uid="uid://c801aeohg2ayh" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Slime_Blue.png" id="1_mkock"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqkc0"]
+atlas = ExtResource("1_mkock")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l01f8"]
+atlas = ExtResource("1_mkock")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yets"]
+atlas = ExtResource("1_mkock")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgscy"]
+atlas = ExtResource("1_mkock")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbp3p"]
+atlas = ExtResource("1_mkock")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8nl5"]
+atlas = ExtResource("1_mkock")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8sac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqkc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l01f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yets")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgscy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbp3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8nl5")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ojtu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkock"]
+
+[node name="Blob" type="CharacterBody2D" unique_id=1824327085]
+motion_mode = 1
+script = ExtResource("1_lqkc0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=941584948]
+sprite_frames = SubResource("SpriteFrames_i8sac")
+animation = &"idle"
+frame = 5
+frame_progress = 0.73739153
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=350550384]
+position = Vector2(0, 6)
+scale = Vector2(0.91852415, 0.86717546)
+shape = SubResource("CircleShape2D_5ojtu")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2061726415]
+scale = Vector2(3.0081844, 2.8321674)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=204442404]
+scale = Vector2(4.120838, 3.952128)
+shape = SubResource("CircleShape2D_mkock")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

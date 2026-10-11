@@ -4,12 +4,13 @@
 [ext_resource type="AudioStream" uid="uid://bg37xf6lda0qe" path="res://Mosor_Camelia_FantasyAdventure/assets/audio/jorisvermeer-mysterious-fairytale-journey.mp3" id="2_y3h3n"]
 [ext_resource type="PackedScene" uid="uid://c4m7cxe488g23" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/Player_Scene.tscn" id="3_gaq5u"]
 [ext_resource type="Script" uid="uid://h55aw37ij7m5" path="res://Mosor_Camelia_FantasyAdventure/scenes/levels/health_bar.gd" id="4_m2o34"]
+[ext_resource type="PackedScene" uid="uid://bg7ydn4koabe6" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/Blob_Scene.tscn" id="5_csml0"]
 
 [node name="Main_Game_Level" type="Node2D" unique_id=873863979]
 
 [node name="Main_Game_Level_BG" type="Sprite2D" parent="." unique_id=1977498240]
-position = Vector2(579, 328)
-scale = Vector2(0.7606367, 0.8833994)
+position = Vector2(612.99994, 349)
+scale = Vector2(0.8884721, 0.98862)
 texture = ExtResource("1_qyaw4")
 
 [node name="MysteriousMusic" type="AudioStreamPlayer2D" parent="." unique_id=1834565109]
@@ -27,5 +28,8 @@ offset_right = 38.0
 offset_bottom = 641.0
 fill_mode = 2
 script = ExtResource("4_m2o34")
+
+[node name="Blob" parent="." unique_id=1824327085 instance=ExtResource("5_csml0")]
+position = Vector2(500, 300)
 
 [connection signal="health_changed" from="Player" to="CanvasLayer/ProgressBar" method="_on_player_health_changed"]
