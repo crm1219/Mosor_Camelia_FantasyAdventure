@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -62,3 +61,8 @@ func take_damage(amount):
 	health_changed.emit(health)
 
 signal health_changed(new_health)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.get_collision_layer_value(2):
+		take_damage(10)

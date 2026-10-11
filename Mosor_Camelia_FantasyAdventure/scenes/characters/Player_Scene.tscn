@@ -835,7 +835,10 @@ animations = [{
 radius = 13.0
 height = 72.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i8sac"]
+
 [node name="Player" type="CharacterBody2D" unique_id=239006189]
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_46ldr")
 
@@ -844,7 +847,16 @@ sprite_frames = SubResource("SpriteFrames_186t8")
 animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1311953131]
-scale = Vector2(-0.7160683, 0.58471847)
+scale = Vector2(-0.8663511, 0.58951646)
 shape = SubResource("CapsuleShape2D_drin2")
 
+[node name="Area2D" type="Area2D" parent="." unique_id=730400854]
+scale = Vector2(3.7651746, 2.6055026)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2041685575]
+scale = Vector2(1.2625519, 1.3053656)
+shape = SubResource("CapsuleShape2D_i8sac")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -58,6 +58,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkock"]
 
 [node name="Blob" type="CharacterBody2D" unique_id=1824327085]
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_lqkc0")
 
@@ -69,11 +70,12 @@ frame_progress = 0.73739153
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=350550384]
 position = Vector2(0, 6)
-scale = Vector2(0.91852415, 0.86717546)
+scale = Vector2(1.5890887, 1.2348397)
 shape = SubResource("CircleShape2D_5ojtu")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2061726415]
 scale = Vector2(3.0081844, 2.8321674)
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=204442404]
 scale = Vector2(4.120838, 3.952128)

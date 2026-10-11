@@ -19,6 +19,9 @@ autoplay = true
 
 [node name="Player" parent="." unique_id=239006189 instance=ExtResource("3_gaq5u")]
 
+[node name="Blob" parent="." unique_id=1824327085 instance=ExtResource("5_csml0")]
+position = Vector2(500, 300)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1482519193]
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=381798207]
@@ -28,8 +31,5 @@ offset_right = 38.0
 offset_bottom = 641.0
 fill_mode = 2
 script = ExtResource("4_m2o34")
-
-[node name="Blob" parent="." unique_id=1824327085 instance=ExtResource("5_csml0")]
-position = Vector2(500, 300)
 
 [connection signal="health_changed" from="Player" to="CanvasLayer/ProgressBar" method="_on_player_health_changed"]
