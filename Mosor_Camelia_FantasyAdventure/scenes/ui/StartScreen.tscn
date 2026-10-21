@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dvi87esdsdse1"]
 
 [ext_resource type="Texture2D" uid="uid://dt8fcyf2cwems" path="res://Mosor_Camelia_FantasyAdventure/assets/art/BG_01.png" id="1_3umvo"]
-[ext_resource type="Script" uid="uid://bxcmte8q1ce5o" path="res://Mosor_Camelia_FantasyAdventure/scenes/ui/start_screen.gd" id="1_6wsr8"]
+[ext_resource type="Script" uid="uid://bxcmte8q1ce5o" path="res://Mosor_Camelia_FantasyAdventure/scripts/start_screen.gd" id="1_6wsr8"]
 [ext_resource type="Texture2D" uid="uid://dmij0bd8qbi6p" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Game Title Logo_transp.png" id="3_vhnqa"]
 [ext_resource type="Texture2D" uid="uid://cbpqn6viyigxr" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Button Rect_green_Start_button.png" id="4_5s784"]
 [ext_resource type="AudioStream" uid="uid://cqlsx8oeqno1i" path="res://Mosor_Camelia_FantasyAdventure/assets/audio/Swoosh_SFX.mp3" id="4_tludg"]
@@ -21,7 +21,7 @@ resource_name = "Game_Title"
 
 [sub_resource type="Animation" id="Animation_3p1ow"]
 resource_name = "Game_Title_Bounce"
-length = 1.5999999999999999
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

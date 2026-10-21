@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cbu8wu155u626"]
+
+[ext_resource type="Script" uid="uid://bydmsqqolkbtb" path="res://Mosor_Camelia_FantasyAdventure/scripts/hitbox.gd" id="1_aytfc"]
+[ext_resource type="Texture2D" uid="uid://boajxjmt867tr" path="res://Mosor_Camelia_FantasyAdventure/assets/art/spikes.jpg" id="1_um6ky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aytfc"]
+size = Vector2(261, 92)
+
+[node name="SpikeTrap" type="Area2D" unique_id=2075178705]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_aytfc")
+damage = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=36596701]
+scale = Vector2(0.541245, 0.36550444)
+texture = ExtResource("1_um6ky")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2083976344]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_aytfc")

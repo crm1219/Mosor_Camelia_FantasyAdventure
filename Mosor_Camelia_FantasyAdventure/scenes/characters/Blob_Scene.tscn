@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bg7ydn4koabe6"]
 
-[ext_resource type="Script" uid="uid://da2mg5edb3nir" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/blob_ai.gd" id="1_lqkc0"]
+[ext_resource type="Script" uid="uid://da2mg5edb3nir" path="res://Mosor_Camelia_FantasyAdventure/scripts/blob_ai.gd" id="1_lqkc0"]
 [ext_resource type="Texture2D" uid="uid://c801aeohg2ayh" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Slime_Blue.png" id="1_mkock"]
+[ext_resource type="Texture2D" uid="uid://dajln16167dg" path="res://Mosor_Camelia_FantasyAdventure/assets/art/Slime_Blue - Copy.png" id="3_3yets"]
+[ext_resource type="Script" uid="uid://bydmsqqolkbtb" path="res://Mosor_Camelia_FantasyAdventure/scripts/hitbox.gd" id="3_l01f8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqkc0"]
 atlas = ExtResource("1_mkock")
@@ -27,6 +29,42 @@ region = Rect2(128, 0, 32, 32)
 atlas = ExtResource("1_mkock")
 region = Rect2(160, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ojtu"]
+atlas = ExtResource("3_3yets")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i5vc"]
+atlas = ExtResource("3_3yets")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kopl"]
+atlas = ExtResource("3_3yets")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a414e"]
+atlas = ExtResource("3_3yets")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo7ik"]
+atlas = ExtResource("3_3yets")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl880"]
+atlas = ExtResource("3_3yets")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0866t"]
+atlas = ExtResource("3_3yets")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwhbr"]
+atlas = ExtResource("3_3yets")
+region = Rect2(256, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2csw"]
+atlas = ExtResource("3_3yets")
+region = Rect2(288, 64, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8sac"]
 animations = [{
 "frames": [{
@@ -51,35 +89,83 @@ animations = [{
 "loop": 1,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ojtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4i5vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kopl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a414e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo7ik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl880")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0866t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwhbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2csw")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ojtu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkock"]
 
-[node name="Blob" type="CharacterBody2D" unique_id=1824327085]
-collision_layer = 2
+[sub_resource type="CircleShape2D" id="CircleShape2D_sf07n"]
+
+[node name="BlobMonster" type="CharacterBody2D" unique_id=1824327085]
+collision_layer = 4
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_lqkc0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=941584948]
 sprite_frames = SubResource("SpriteFrames_i8sac")
-animation = &"idle"
-frame = 5
-frame_progress = 0.73739153
+animation = &"move"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=350550384]
 position = Vector2(0, 6)
 scale = Vector2(1.5890887, 1.2348397)
 shape = SubResource("CircleShape2D_5ojtu")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2061726415]
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=2061726415]
 scale = Vector2(3.0081844, 2.8321674)
-collision_layer = 2
+collision_layer = 0
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=204442404]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=204442404]
 scale = Vector2(4.120838, 3.952128)
 shape = SubResource("CircleShape2D_mkock")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1611429606]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=9733408]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_l01f8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=557314256]
+position = Vector2(0, 6)
+scale = Vector2(2.3565013, 2.2398586)
+shape = SubResource("CircleShape2D_sf07n")
+
+[node name="PatrolTimer" type="Timer" parent="." unique_id=656772702]
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dbki2yxjo5h8t"]
+
+[ext_resource type="Texture2D" uid="uid://dox41lv0jppuq" path="res://Mosor_Camelia_FantasyAdventure/assets/art/health meter-06.png" id="1_jgjne"]
+[ext_resource type="Texture2D" uid="uid://da16p7e0rh7p2" path="res://Mosor_Camelia_FantasyAdventure/assets/art/health meter-13.png" id="2_ayosv"]
+[ext_resource type="Script" uid="uid://ca6kysu3akw5t" path="res://Mosor_Camelia_FantasyAdventure/scripts/player_health_bar.gd" id="3_kpun7"]
+
+[node name="GameUI" type="CanvasLayer" unique_id=179178583]
+
+[node name="Control" type="Control" parent="." unique_id=845804126]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="Control" unique_id=1563822802]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("1_jgjne")
+texture_progress = ExtResource("2_ayosv")
+texture_progress_offset = Vector2(85, 45)
+script = ExtResource("3_kpun7")

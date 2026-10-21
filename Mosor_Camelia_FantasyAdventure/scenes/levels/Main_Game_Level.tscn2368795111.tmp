@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://6pp82v2xtyhm"]
+
+[ext_resource type="Texture2D" uid="uid://qeqb7veddh0t" path="res://Mosor_Camelia_FantasyAdventure/assets/art/BG_03.png" id="1_qyaw4"]
+[ext_resource type="AudioStream" uid="uid://bg37xf6lda0qe" path="res://Mosor_Camelia_FantasyAdventure/assets/audio/jorisvermeer-mysterious-fairytale-journey.mp3" id="2_y3h3n"]
+[ext_resource type="PackedScene" uid="uid://c4m7cxe488g23" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/Player_Scene.tscn" id="3_gaq5u"]
+[ext_resource type="PackedScene" uid="uid://bg7ydn4koabe6" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/Blob_Scene.tscn" id="5_csml0"]
+[ext_resource type="PackedScene" uid="uid://dbki2yxjo5h8t" path="res://Mosor_Camelia_FantasyAdventure/scenes/ui/GameUI.tscn" id="5_sf07n"]
+[ext_resource type="PackedScene" uid="uid://cbu8wu155u626" path="res://Mosor_Camelia_FantasyAdventure/scenes/ui/spike_trap.tscn" id="6_sf07n"]
+
+[node name="Main_Game_Level" type="Node2D" unique_id=873863979]
+
+[node name="Main_Game_Level_BG" type="Sprite2D" parent="." unique_id=1977498240]
+position = Vector2(612.99994, 349)
+scale = Vector2(0.8884721, 0.98862)
+texture = ExtResource("1_qyaw4")
+
+[node name="MysteriousMusic" type="AudioStreamPlayer2D" parent="." unique_id=1834565109]
+stream = ExtResource("2_y3h3n")
+autoplay = true
+
+[node name="SpikeTrap" parent="." unique_id=2075178705 instance=ExtResource("6_sf07n")]
+position = Vector2(187, 252)
+scale = Vector2(0.47903708, 0.3689279)
+
+[node name="Player" parent="." unique_id=239006189 groups=["Player"] instance=ExtResource("3_gaq5u")]
+
+[node name="GameUI" parent="." unique_id=179178583 instance=ExtResource("5_sf07n")]
+
+[node name="BlobMonster" parent="." unique_id=1824327085 instance=ExtResource("5_csml0")]
+position = Vector2(501, 390)
+patrol_speed = 40.0
+chase_speed = 70.0
+idle_time_min = 1.0
+idle_time_max = 3.0
+patrol_time_min = 1.5
+patrol_time_max = 4.0
+detection_range = 120.0
+give_up_time = 3.0

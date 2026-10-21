@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://qeqb7veddh0t" path="res://Mosor_Camelia_FantasyAdventure/assets/art/BG_03.png" id="1_qyaw4"]
 [ext_resource type="AudioStream" uid="uid://bg37xf6lda0qe" path="res://Mosor_Camelia_FantasyAdventure/assets/audio/jorisvermeer-mysterious-fairytale-journey.mp3" id="2_y3h3n"]
 [ext_resource type="PackedScene" uid="uid://c4m7cxe488g23" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/Player_Scene.tscn" id="3_gaq5u"]
-[ext_resource type="Script" uid="uid://h55aw37ij7m5" path="res://Mosor_Camelia_FantasyAdventure/scenes/levels/health_bar.gd" id="4_m2o34"]
 [ext_resource type="PackedScene" uid="uid://bg7ydn4koabe6" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/Blob_Scene.tscn" id="5_csml0"]
+[ext_resource type="PackedScene" uid="uid://dbki2yxjo5h8t" path="res://Mosor_Camelia_FantasyAdventure/scenes/ui/GameUI.tscn" id="5_sf07n"]
+[ext_resource type="PackedScene" uid="uid://cii2fcr322vjd" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/blob_spawner.tscn" id="7_g5dw8"]
 
 [node name="Main_Game_Level" type="Node2D" unique_id=873863979]
 
@@ -17,19 +18,16 @@ texture = ExtResource("1_qyaw4")
 stream = ExtResource("2_y3h3n")
 autoplay = true
 
-[node name="Player" parent="." unique_id=239006189 instance=ExtResource("3_gaq5u")]
+[node name="Player" parent="." unique_id=239006189 groups=["Player"] instance=ExtResource("3_gaq5u")]
+collision_layer = 2
+collision_mask = 4
 
-[node name="Blob" parent="." unique_id=1824327085 instance=ExtResource("5_csml0")]
-position = Vector2(500, 300)
+[node name="GameUI" parent="." unique_id=179178583 instance=ExtResource("5_sf07n")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1482519193]
+[node name="BlobMonster" parent="." unique_id=1824327085 instance=ExtResource("5_csml0")]
+position = Vector2(501, 390)
+collision_mask = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=381798207]
-offset_left = 34.0
-offset_top = 614.0
-offset_right = 38.0
-offset_bottom = 641.0
-fill_mode = 2
-script = ExtResource("4_m2o34")
-
-[connection signal="health_changed" from="Player" to="CanvasLayer/ProgressBar" method="_on_player_health_changed"]
+[node name="BlobSpawner" parent="." unique_id=109584726 instance=ExtResource("7_g5dw8")]
+position = Vector2(2, 5)
+blob_scene = ExtResource("5_csml0")
