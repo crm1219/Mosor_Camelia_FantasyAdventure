@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://de7jeixcuv3le" path="res://Mosor_Camelia_FantasyAdventure/assets/player/Barbarian_Idle.png" id="4_46ldr"]
 [ext_resource type="Texture2D" uid="uid://cseowbl4cvghc" path="res://Mosor_Camelia_FantasyAdventure/assets/player/Barbarian_Run.png" id="5_34qdh"]
 [ext_resource type="Script" uid="uid://dcw7s5ng0vqlp" path="res://Mosor_Camelia_FantasyAdventure/scripts/hurtbox.gd" id="7_34qdh"]
+[ext_resource type="AudioStream" uid="uid://dup5yrqwf2e3u" path="res://Mosor_Camelia_FantasyAdventure/assets/audio/Hurt_Sound.mp3" id="8_n3cv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nu6j"]
 atlas = ExtResource("1_5pifc")
@@ -100,6 +101,22 @@ region = Rect2(243, 282, 89, 70)
 atlas = ExtResource("1_5pifc")
 region = Rect2(320, 286, 85, 71)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1cqh"]
+atlas = ExtResource("2_46ldr")
+region = Rect2(296, 0, 74, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6jt5"]
+atlas = ExtResource("2_46ldr")
+region = Rect2(300, 252, 75, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u71ia"]
+atlas = ExtResource("2_46ldr")
+region = Rect2(296, 108, 74, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgnu4"]
+atlas = ExtResource("2_46ldr")
+region = Rect2(296, 202, 74, 50)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6svqw"]
 atlas = ExtResource("2_46ldr")
 region = Rect2(0, 0, 53, 54)
@@ -119,10 +136,6 @@ region = Rect2(168, 0, 56, 54)
 [sub_resource type="AtlasTexture" id="AtlasTexture_130kv"]
 atlas = ExtResource("2_46ldr")
 region = Rect2(222, 0, 74, 54)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1cqh"]
-atlas = ExtResource("2_46ldr")
-region = Rect2(296, 0, 74, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a340w"]
 atlas = ExtResource("2_46ldr")
@@ -144,10 +157,6 @@ region = Rect2(180, 294, 60, 42)
 atlas = ExtResource("2_46ldr")
 region = Rect2(240, 294, 60, 42)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x6jt5"]
-atlas = ExtResource("2_46ldr")
-region = Rect2(300, 252, 75, 42)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_v7lqg"]
 atlas = ExtResource("2_46ldr")
 region = Rect2(0, 104, 59, 52)
@@ -168,10 +177,6 @@ region = Rect2(174, 106, 58, 52)
 atlas = ExtResource("2_46ldr")
 region = Rect2(232, 106, 58, 52)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u71ia"]
-atlas = ExtResource("2_46ldr")
-region = Rect2(296, 108, 74, 53)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_73aya"]
 atlas = ExtResource("2_46ldr")
 region = Rect2(0, 198, 58, 49)
@@ -191,10 +196,6 @@ region = Rect2(174, 198, 58, 49)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qaysv"]
 atlas = ExtResource("2_46ldr")
 region = Rect2(232, 198, 58, 49)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sgnu4"]
-atlas = ExtResource("2_46ldr")
-region = Rect2(296, 202, 74, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61y8d"]
 atlas = ExtResource("3_5pifc")
@@ -509,6 +510,38 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attack_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1cqh")
+}],
+"loop": 1,
+"name": &"dead_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6jt5")
+}],
+"loop": 1,
+"name": &"dead_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u71ia")
+}],
+"loop": 1,
+"name": &"dead_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgnu4")
+}],
+"loop": 1,
+"name": &"dead_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -846,13 +879,14 @@ script = ExtResource("1_46ldr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1957988415]
 sprite_frames = SubResource("SpriteFrames_186t8")
-animation = &"idle_down"
+animation = &"dead_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1311953131]
 scale = Vector2(-0.8663511, 0.58951646)
 shape = SubResource("CapsuleShape2D_drin2")
 
 [node name="PlayerHurtbox" type="Area2D" parent="." unique_id=1193426446]
+scale = Vector2(0.79796517, 0.85789895)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("7_34qdh")
@@ -860,5 +894,9 @@ script = ExtResource("7_34qdh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox" unique_id=1479304789]
 scale = Vector2(2.3008516, 2.4011297)
 shape = SubResource("CapsuleShape2D_cax1j")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=1037519315]
+stream = ExtResource("8_n3cv6")
+volume_db = 8.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -134,8 +134,8 @@ autoplay = &"Game_Title_Bounce"
 
 [node name="BG_01_texRect" type="TextureRect" parent="." unique_id=737481840]
 layout_mode = 1
-offset_right = 1536.0
-offset_bottom = 768.0
+offset_right = 1708.5565
+offset_bottom = 856.42426
 scale = Vector2(0.7485851, 0.84304005)
 texture = ExtResource("1_3umvo")
 stretch_mode = 6
@@ -206,10 +206,10 @@ stream = ExtResource("8_fqhis")
 
 [node name="Title_Scroll" type="TextureRect" parent="." unique_id=1306931891]
 layout_mode = 0
-offset_left = 687.0
-offset_top = 63.0
-offset_right = 2111.0
-offset_bottom = 911.0
+offset_left = 807.0
+offset_top = 127.99997
+offset_right = 2231.0
+offset_bottom = 976.0
 scale = Vector2(0.338, 0.368)
 pivot_offset = Vector2(0, 424)
 texture = ExtResource("13_0ecbh")
@@ -224,10 +224,10 @@ texture = ExtResource("14_1jc11")
 
 [node name="Course_Notation" type="TextureRect" parent="." unique_id=1908355935]
 layout_mode = 0
-offset_left = 804.99994
-offset_top = 597.0
-offset_right = 1579.0
-offset_bottom = 674.0
+offset_left = 913.99994
+offset_top = 655.0
+offset_right = 1688.0
+offset_bottom = 732.0
 scale = Vector2(0.44607565, 0.66780317)
 texture = ExtResource("15_2lgdx")
 

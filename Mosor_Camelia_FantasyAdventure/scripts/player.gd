@@ -5,16 +5,20 @@ const JUMP_VELOCITY = -400.0
 
 @export var speed = 200
 @onready var animated_sprite = $AnimatedSprite2D
+@export var knockback_friction: float = 10.0
 
 var last_direction = "down"
 var is_action_playing = false
 
 signal health_changed(current_health, max_health)
+signal player_died()
 @export var max_health: int = 100
 # How long the player remains immune to damage after a hit (in
 # seconds)
 @export var iframe_duration: float = 0.6
 var current_health: int
+var knockback_velocity: Vector2 = Vector2.ZERO
+var is_in_knockback: bool = false
 
 # Reference the child hurtbox node
 @onready var hurtbox: Hurtbox = $PlayerHurtbox
@@ -28,9 +32,16 @@ func _ready() -> void:
 	
 	# Connect the hurtbox signal directly to our take_damage
 	# function
-	hurtbox.damage_received.connect(take_damage)
+	hurtbox.damage_received.connect(_on_damage_received)
 	
+func _on_damage_received(hitbox: Hitbox) -> void:
+	# Extract parameters from the incoming hitbox object
+	take_damage(hitbox.damage)
+	apply_knockback(hitbox.global_position, hitbox.knockback_force)
+
 func take_damage(amount: int) -> void:
+	$HurtSound.play()
+	play_action_animation("hit")
 	current_health = clampi(current_health - amount, 0,
 	max_health)
 	health_changed.emit(current_health, max_health)
@@ -47,6 +58,17 @@ func heal(amount: int) -> void:
 	max_health)
 	health_changed.emit(current_health, max_health)
 	
+func apply_knockback(source_position: Vector2, force: float) -> void:
+# Calculate direction pointing from the threat directly to
+# our player
+	var knockback_direction = (global_position - source_position).normalized()
+	# If positions overlap exactly, push in a default direction
+	# to avoid vector zero errors
+	if knockback_direction == Vector2.ZERO:
+		knockback_direction = Vector2.DOWN
+	knockback_velocity = knockback_direction * force
+	is_in_knockback = true
+	
 func flash_sprite() -> void:
 	# Create a quick visual flash using an inline tween
 	var flash_tween = create_tween()
@@ -62,6 +84,9 @@ func flash_sprite() -> void:
 	iframe_duration / 4.0)
 	
 func die() -> void:
+	play_action_animation("die")
+	animated_sprite.play("dead_" + last_direction)
+	player_died.emit()
 	print("Player died!")
 
 func update_direction(input_direction):
@@ -93,18 +118,28 @@ func _unhandled_input(event):
 		play_action_animation("die")
 
 func _physics_process(delta: float) -> void:
-	
-	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	
-	velocity = input_direction * speed
-	
-	update_direction(input_direction)
-	
-	if not is_action_playing:
-		update_movement_animation(input_direction)
+	if is_in_knockback:
+		# 1. Apply knockback movement
+		velocity = knockback_velocity
+		move_and_slide()
+		# 2. Smoothly reduce knockback velocity over time
+		# using friction linear interpolation (lerp)
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_friction * speed * delta)
+		# 3. Restore control to the player once the velocity
+		# drops close to zero
+		if knockback_velocity.length() < 10.0:
+			is_in_knockback = false
+	else:
+		var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		
+		velocity = input_direction * speed
+		
+		update_direction(input_direction)
+		
+		if not is_action_playing:
+			update_movement_animation(input_direction)
 
-
-	move_and_slide()
+		move_and_slide()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	is_action_playing = false

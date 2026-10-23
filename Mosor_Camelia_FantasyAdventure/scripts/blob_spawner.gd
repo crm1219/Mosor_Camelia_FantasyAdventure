@@ -40,6 +40,7 @@ func spawn_new_blob() -> void:
 # 5. Pick a completely random marker location from our gathered list
 	var random_marker = spawn_points.pick_random()
 	# 6. Instance the scene into system memory
+	$PopSound.play()
 	var new_blob = blob_scene.instantiate() as CharacterBody2D
 	# 7. Match its transform positioning coordinates to the chosen
 	# marker

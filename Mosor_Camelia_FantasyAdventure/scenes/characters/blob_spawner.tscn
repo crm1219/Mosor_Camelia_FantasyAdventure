@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cii2fcr322vjd"]
 
 [ext_resource type="Script" uid="uid://cq2nkfvcrn7kv" path="res://Mosor_Camelia_FantasyAdventure/scripts/blob_spawner.gd" id="1_vmm6i"]
+[ext_resource type="AudioStream" uid="uid://boivgkvkdeb4q" path="res://Mosor_Camelia_FantasyAdventure/assets/audio/Pop_Sound.mp3" id="2_o2l03"]
 
 [node name="BlobSpawner" type="Node2D" unique_id=109584726]
 script = ExtResource("1_vmm6i")
@@ -12,3 +13,6 @@ position = Vector2(504, 178)
 
 [node name="SpawnPoint2" type="Marker2D" parent="." unique_id=1062718057]
 position = Vector2(1058, 451)
+
+[node name="PopSound" type="AudioStreamPlayer2D" parent="." unique_id=872186566]
+stream = ExtResource("2_o2l03")

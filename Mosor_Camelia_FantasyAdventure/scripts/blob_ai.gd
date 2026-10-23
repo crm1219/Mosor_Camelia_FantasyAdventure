@@ -11,7 +11,7 @@ extends CharacterBody2D
 @export var patrol_time_max: float = 4.0
 
 @export_group("Chasing")
-@export var detection_range: float = 120.0
+@export var detection_range: float = 300.0
 @export var give_up_time: float = 3.0
 
 const BLOB_GROUP := &"blobs"

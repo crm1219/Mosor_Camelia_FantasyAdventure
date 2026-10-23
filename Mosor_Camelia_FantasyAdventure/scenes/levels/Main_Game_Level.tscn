@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://6pp82v2xtyhm"]
 
+[ext_resource type="Script" uid="uid://cp1fffmhq04ud" path="res://Mosor_Camelia_FantasyAdventure/scenes/levels/main_game_level.gd" id="1_g5dw8"]
 [ext_resource type="Texture2D" uid="uid://qeqb7veddh0t" path="res://Mosor_Camelia_FantasyAdventure/assets/art/BG_03.png" id="1_qyaw4"]
 [ext_resource type="AudioStream" uid="uid://bg37xf6lda0qe" path="res://Mosor_Camelia_FantasyAdventure/assets/audio/jorisvermeer-mysterious-fairytale-journey.mp3" id="2_y3h3n"]
 [ext_resource type="PackedScene" uid="uid://c4m7cxe488g23" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/Player_Scene.tscn" id="3_gaq5u"]
 [ext_resource type="PackedScene" uid="uid://bg7ydn4koabe6" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/Blob_Scene.tscn" id="5_csml0"]
 [ext_resource type="PackedScene" uid="uid://dbki2yxjo5h8t" path="res://Mosor_Camelia_FantasyAdventure/scenes/ui/GameUI.tscn" id="5_sf07n"]
 [ext_resource type="PackedScene" uid="uid://cii2fcr322vjd" path="res://Mosor_Camelia_FantasyAdventure/scenes/characters/blob_spawner.tscn" id="7_g5dw8"]
+[ext_resource type="AudioStream" uid="uid://myrcijko7obb" path="res://Mosor_Camelia_FantasyAdventure/assets/audio/Sad_Music.mp3" id="8_p54ca"]
 
 [node name="Main_Game_Level" type="Node2D" unique_id=873863979]
+script = ExtResource("1_g5dw8")
 
 [node name="Main_Game_Level_BG" type="Sprite2D" parent="." unique_id=1977498240]
 position = Vector2(612.99994, 349)
@@ -19,6 +22,7 @@ stream = ExtResource("2_y3h3n")
 autoplay = true
 
 [node name="Player" parent="." unique_id=239006189 groups=["Player"] instance=ExtResource("3_gaq5u")]
+position = Vector2(168, 159)
 collision_layer = 2
 collision_mask = 4
 
@@ -31,3 +35,6 @@ collision_mask = 2
 [node name="BlobSpawner" parent="." unique_id=109584726 instance=ExtResource("7_g5dw8")]
 position = Vector2(2, 5)
 blob_scene = ExtResource("5_csml0")
+
+[node name="SadMusic" type="AudioStreamPlayer2D" parent="." unique_id=925924030]
+stream = ExtResource("8_p54ca")

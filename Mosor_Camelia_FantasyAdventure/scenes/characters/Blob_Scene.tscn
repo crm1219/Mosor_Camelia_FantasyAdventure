@@ -145,7 +145,7 @@ scale = Vector2(1.5890887, 1.2348397)
 shape = SubResource("CircleShape2D_5ojtu")
 
 [node name="PlayerDetector" type="Area2D" parent="." unique_id=2061726415]
-scale = Vector2(3.0081844, 2.8321674)
+scale = Vector2(0.24375898, 0.21606387)
 collision_layer = 0
 collision_mask = 2
 
@@ -156,6 +156,8 @@ shape = SubResource("CircleShape2D_mkock")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1611429606]
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=9733408]
+position = Vector2(0, 6)
+scale = Vector2(0.7026938, 0.5540681)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_l01f8")
